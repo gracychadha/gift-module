@@ -115,7 +115,7 @@ $favicon = $settings['favicon'] ?? 'assets/images/favicon.png';
                                                 <th>S.NO</th>
                                                 <th>PARENT CATEGORY</th>
                                                 <th>SUB-CATEGORY NAME</th>
-                                                <th>DURATION (DAYS)</th>
+                                                <th>PRICE</th>
                                                 <th>STATUS</th>
                                                 <th>ACTIONS</th>
                                             </tr>
@@ -132,7 +132,7 @@ $favicon = $settings['favicon'] ?? 'assets/images/favicon.png';
                                                     <td><?php echo $count++; ?></td>
                                                     <td><?php echo htmlspecialchars($row['parent_category']); ?></td>
                                                     <td><?php echo htmlspecialchars($row['subcategory_name']); ?></td>
-                                                    <td><?php echo htmlspecialchars($row['duration_days']); ?> Days</td>
+                                                    <td><?php echo htmlspecialchars($row['duration_days']); ?> /-</td>
                                                     <td><?php echo $status_badge; ?></td>
                                                     <td>
                                                         <button type='button' class='btn btn-warning btn-sm edit-btn'
@@ -192,8 +192,8 @@ $favicon = $settings['favicon'] ?? 'assets/images/favicon.png';
                             <input type="text" name="subcategory_name" class="form-control" placeholder="e.g., 2 Days" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Duration in Days <span class="text-danger">*</span></label>
-                            <input type="number" name="duration_days" class="form-control" placeholder="e.g., 2" min="1" required>
+                            <label class="form-label">Price <span class="text-danger">*</span></label>
+                            <input type="number" name="duration_days" class="form-control" placeholder="e.g., ₹10000/-" min="1" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
@@ -240,7 +240,7 @@ $favicon = $settings['favicon'] ?? 'assets/images/favicon.png';
                             <input type="text" name="subcategory_name" id="edit_subcategory_name" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Duration in Days <span class="text-danger">*</span></label>
+                            <label class="form-label">Price <span class="text-danger">*</span></label>
                             <input type="number" name="duration_days" id="edit_duration_days" class="form-control" min="1" required>
                         </div>
                         <div class="mb-3">
