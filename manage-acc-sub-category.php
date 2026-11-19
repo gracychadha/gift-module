@@ -9,7 +9,7 @@ $name = $_SESSION['login_user'];
 include("db/config.php");
 
 // Fetch Subcategories with Parent Category Name using JOIN
-$query = "SELECT s.id, s.category_id, c.category_name AS parent_category, s.subcategory_name, s.duration_days, s.status 
+$query = "SELECT s.id, s.category_id, c.category_name AS parent_category, s.subcategory_name, s.price, s.status 
           FROM accommodation_subcategories s 
           LEFT JOIN accommodation_categories c ON s.category_id = c.id 
           ORDER BY s.id DESC";
@@ -132,14 +132,14 @@ $favicon = $settings['favicon'] ?? 'assets/images/favicon.png';
                                                     <td><?php echo $count++; ?></td>
                                                     <td><?php echo htmlspecialchars($row['parent_category']); ?></td>
                                                     <td><?php echo htmlspecialchars($row['subcategory_name']); ?></td>
-                                                    <td><?php echo htmlspecialchars($row['duration_days']); ?> /-</td>
+                                                    <td><?php echo htmlspecialchars($row['price']); ?> /-</td>
                                                     <td><?php echo $status_badge; ?></td>
                                                     <td>
                                                         <button type='button' class='btn btn-warning btn-sm edit-btn'
                                                             data-id='<?php echo $encoded_id; ?>'
                                                             data-catid='<?php echo $row['category_id']; ?>'
                                                             data-name='<?php echo htmlspecialchars($row['subcategory_name']); ?>'
-                                                            data-duration='<?php echo $row['duration_days']; ?>'
+                                                            data-duration='<?php echo $row['price']; ?>'
                                                             data-status='<?php echo $row['status']; ?>'
                                                             data-bs-toggle='modal' data-bs-target='#editModal'>
                                                             <i class='feather icon-edit'></i>

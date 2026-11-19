@@ -18,7 +18,7 @@ switch ($action) {
         $duration_days = (int)$_POST['duration_days'];
         $status = (int)$_POST['status'];
 
-        $query = "INSERT INTO accommodation_subcategories (category_id, subcategory_name, duration_days, status) 
+        $query = "INSERT INTO accommodation_subcategories (category_id, subcategory_name, price, status) 
                   VALUES ($category_id, '$subcategory_name', $duration_days, $status)";
         
         if (mysqli_query($db, $query)) {
@@ -40,7 +40,7 @@ switch ($action) {
         $query = "UPDATE accommodation_subcategories SET 
                   category_id = $category_id, 
                   subcategory_name = '$subcategory_name', 
-                  duration_days = $duration_days, 
+                  price = $duration_days, 
                   status = $status 
                   WHERE id = $id";
         
