@@ -79,8 +79,36 @@ if ($adminId) {
                         </a>
                     </li>
                 <?php endif; ?>
+                <!-- Accommodation -->
+                <?php if (
+                    $isAdmin ||
+                    in_array('Add Accommodation Category', $permissions) ||
+                    in_array('All Accommodation Categories', $permissions) ||
+                    in_array('Manage Accommodation Sub Category', $permissions) ||
+                    in_array('All', $permissions)
+                ): ?>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link">
+                            <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
+                            <span class="pcoded-mtext">Accommodation</span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                           
 
-              
+                            <?php if ($isAdmin || in_array('Add Accommodation Category', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="add-accomodation-category.php">Add Accommodation Category</a></li>
+                            <?php endif; ?>
+                            <?php if ($isAdmin || in_array('Manage Accommodation Category', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="manage-accomodation-category.php">Manage Accommodation Category</a></li>
+                            <?php endif; ?>
+                            <?php if ($isAdmin || in_array('Manage Accommodation Sub Category', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="manage-acc-sub-category.php">Manage Sub Category</a></li>
+                            <?php endif; ?>
+
+                          
+                        </ul>
+                    </li>
+                <?php endif; ?>
 
                 <!-- Abstracts -->
                 <?php if (
@@ -154,12 +182,12 @@ if ($adminId) {
                 <?php endif; ?>
 
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add New Client', $permissions) ||
-                    in_array('All Client', $permissions) ||
-                    in_array('All Recycle', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add New Client', $permissions) ||
+                            in_array('All Client', $permissions) ||
+                            in_array('All Recycle', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-user"></i></span>
@@ -239,12 +267,12 @@ if ($adminId) {
 
 
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add New Employee', $permissions) ||
-                    in_array('All Employees', $permissions) ||
-                    in_array('All Trainees', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add New Employee', $permissions) ||
+                            in_array('All Employees', $permissions) ||
+                            in_array('All Trainees', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-users"></i></span>
@@ -265,13 +293,13 @@ if ($adminId) {
                     </li>
                 <?php endif; ?> -->
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add New Position', $permissions) ||
-                    in_array('All Positions', $permissions) ||
-                    in_array('Add New Responsibility', $permissions) ||
-                    in_array('All Responsibilities', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add New Position', $permissions) ||
+                            in_array('All Positions', $permissions) ||
+                            in_array('Add New Responsibility', $permissions) ||
+                            in_array('All Responsibilities', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-users"></i></span>
@@ -299,11 +327,11 @@ if ($adminId) {
                 <?php endif; ?> -->
 
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add New Offer Letter', $permissions) ||
-                    in_array('All Offer Letters', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add New Offer Letter', $permissions) ||
+                            in_array('All Offer Letters', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
@@ -325,12 +353,12 @@ if ($adminId) {
                 <?php endif; ?> -->
 
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add Salary Slip', $permissions) ||
-                    in_array('All Salary Slips', $permissions) ||
-                    in_array('Requested Salary Slips', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add Salary Slip', $permissions) ||
+                            in_array('All Salary Slips', $permissions) ||
+                            in_array('Requested Salary Slips', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
@@ -353,17 +381,17 @@ if ($adminId) {
                 <?php endif; ?> -->
 
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add New Greetings', $permissions) ||
-                    in_array('All Greetings', $permissions) ||
-                    in_array('Add New Employee Month', $permissions) ||
-                    in_array('All Employee Month', $permissions) ||
-                    in_array('Add Birthday Greetings', $permissions) ||
-                    in_array('All Birthday Greetings', $permissions) ||
-                    in_array('Add Work Anniversary', $permissions) ||
-                    in_array('All Work Anniversary', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add New Greetings', $permissions) ||
+                            in_array('All Greetings', $permissions) ||
+                            in_array('Add New Employee Month', $permissions) ||
+                            in_array('All Employee Month', $permissions) ||
+                            in_array('Add Birthday Greetings', $permissions) ||
+                            in_array('All Birthday Greetings', $permissions) ||
+                            in_array('Add Work Anniversary', $permissions) ||
+                            in_array('All Work Anniversary', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
@@ -426,14 +454,14 @@ if ($adminId) {
                     </li>
                 <?php endif; ?> -->
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Manage Certificates', $permissions) ||
-                    in_array('Add New Internship Letter', $permissions) ||
-                    in_array('All Internship Letters', $permissions) ||
-                    in_array('Add New Experience Letter', $permissions) ||
-                    in_array('All Experience Letters', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Manage Certificates', $permissions) ||
+                            in_array('Add New Internship Letter', $permissions) ||
+                            in_array('All Internship Letters', $permissions) ||
+                            in_array('Add New Experience Letter', $permissions) ||
+                            in_array('All Experience Letters', $permissions) ||
+                            in_array('All', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <?php if ($isAdmin || in_array('Manage Certificates', $permissions) || in_array('All', $permissions)): ?>
                             <a href="#!" class="nav-link">
@@ -460,10 +488,10 @@ if ($adminId) {
                     </li>
                 <?php endif; ?> -->
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add Id Card', $permissions) ||
-                    in_array('All Id Cards', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add Id Card', $permissions) ||
+                            in_array('All Id Cards', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
@@ -483,10 +511,10 @@ if ($adminId) {
                     </li>
                 <?php endif; ?> -->
                 <!-- <?php if (
-                    $isAdmin ||
-                    in_array('Add Event', $permissions) ||
-                    in_array('All Events', $permissions)
-                ): ?>
+                            $isAdmin ||
+                            in_array('Add Event', $permissions) ||
+                            in_array('All Events', $permissions)
+                        ): ?>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link">
                             <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
