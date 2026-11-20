@@ -79,36 +79,6 @@ if ($adminId) {
                         </a>
                     </li>
                 <?php endif; ?>
-                <!-- Accommodation -->
-                <?php if (
-                    $isAdmin ||
-                    in_array('Add Accommodation Category', $permissions) ||
-                    in_array('All Accommodation Categories', $permissions) ||
-                    in_array('Manage Accommodation Sub Category', $permissions) ||
-                    in_array('All', $permissions)
-                ): ?>
-                    <li class="nav-item pcoded-hasmenu">
-                        <a href="#!" class="nav-link">
-                            <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
-                            <span class="pcoded-mtext">Accommodation</span>
-                        </a>
-                        <ul class="pcoded-submenu">
-                           
-
-                            <?php if ($isAdmin || in_array('Add Accommodation Category', $permissions) || in_array('All', $permissions)): ?>
-                                <li><a href="add-accomodation-category.php">Add Accommodation Category</a></li>
-                            <?php endif; ?>
-                            <?php if ($isAdmin || in_array('Manage Accommodation Category', $permissions) || in_array('All', $permissions)): ?>
-                                <li><a href="manage-accomodation-category.php">Manage Accommodation Category</a></li>
-                            <?php endif; ?>
-                            <?php if ($isAdmin || in_array('Manage Accommodation Sub Category', $permissions) || in_array('All', $permissions)): ?>
-                                <li><a href="manage-acc-sub-category.php">Manage Sub Category</a></li>
-                            <?php endif; ?>
-
-                          
-                        </ul>
-                    </li>
-                <?php endif; ?>
 
                 <!-- Abstracts -->
                 <?php if (
@@ -158,6 +128,37 @@ if ($adminId) {
                         </ul>
                     </li>
                 <?php endif; ?>
+                <!-- Accommodation -->
+                <?php if (
+                    $isAdmin ||
+                    in_array('Add Accommodation Category', $permissions) ||
+                    in_array('All Accommodation Categories', $permissions) ||
+                    in_array('Manage Accommodation Sub Category', $permissions) ||
+                    in_array('All', $permissions)
+                ): ?>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link">
+                            <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
+                            <span class="pcoded-mtext">Accommodation</span>
+                        </a>
+                        <ul class="pcoded-submenu">
+
+
+                            <?php if ($isAdmin || in_array('Add Accommodation Category', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="add-accomodation-category.php">Add Accommodation Category</a></li>
+                            <?php endif; ?>
+                            <?php if ($isAdmin || in_array('Manage Accommodation Category', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="manage-accomodation-category.php">Manage Accommodation Category</a></li>
+                            <?php endif; ?>
+                            <?php if ($isAdmin || in_array('Manage Accommodation Sub Category', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="manage-acc-sub-category.php">Manage Sub Category</a></li>
+                            <?php endif; ?>
+
+
+                        </ul>
+                    </li>
+                <?php endif; ?>
+
                 <!-- GIFT MODULE -->
                 <?php if (
                     $isAdmin ||
@@ -176,6 +177,15 @@ if ($adminId) {
                             <?php if ($isAdmin || in_array('Gift Distribution', $permissions) || in_array('All', $permissions)): ?>
                                 <li><a href="distribute_gifts.php">Gift Distribution</a></li>
                             <?php endif; ?>
+                            <?php if ($isAdmin || in_array('Gift Reports', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="gift_reports.php">Gift Reports</a></li>
+                            <?php endif; ?>
+                            <?php if ($isAdmin || in_array('Manual Distribution', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="manual_distribution.php">Manual Distribution</a></li>
+                            <?php endif; ?>
+                            <!-- <?php if ($isAdmin || in_array('Gift Final Checklist', $permissions) || in_array('All', $permissions)): ?>
+                                <li><a href="gift_master_checklist.php">Gift Final Checklist</a></li>
+                            <?php endif; ?> -->
 
                         </ul>
                     </li>
