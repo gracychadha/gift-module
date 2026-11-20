@@ -18,11 +18,9 @@ $error_msg = "";
 if (isset($_GET['student_id']) && !empty($_GET['student_id'])) {
     $input = trim($_GET['student_id']);
 
-    // LIKE pattern ke liye % aur _ escape karo (taaki user ka % galat match na kare)
     $escaped = str_replace(['%', '_'], ['\%', '\_'], $input);
     $like    = '%' . $escaped . '%';
 
-    // ✅ MULTI-FIELD SMART SEARCH
     // Number (student_id / contact_number) | delegate_id | First Name | Last Name | Full Name
     $stmt = $db->prepare("SELECT student_id, first_name, contact_number, last_name, role, specialty, hospital, delegate_id, payment_status 
                           FROM registered_users 
@@ -43,12 +41,10 @@ if (isset($_GET['student_id']) && !empty($_GET['student_id'])) {
 
     if ($student_data) {
 
-        // ✅ Payment Check Flag
         $is_payment_pending = ($student_data['payment_status'] !== 'paid');
 
         $student_role = strtolower(trim($student_data['role'] ?? 'delegate'));
 
-        // ✅ Gifts + Distributed Count (ek hi query mein)
         $gifts_result = $db->query("
             SELECT g.*, 
                    (SELECT COUNT(*) FROM gift_distributions d WHERE d.gift_id = g.id) AS distributed_count
@@ -73,7 +69,6 @@ if (isset($_GET['student_id']) && !empty($_GET['student_id'])) {
             ];
         }
 
-        // ✅ Overall Stats
         $stats = $db->query("
             SELECT 
                 COALESCE(SUM(g.total_stock), 0) AS total_stock,
@@ -536,40 +531,37 @@ $rem_percent  = $stats['total_stock'] > 0 ? round(($stats['total_remaining'] / $
             let lastKeyTime = 0;
             let scanTimeout = null;
 
-            // 1. Page load hote hi input pe focus lao
+           
             $input.focus();
 
-            // 2. Agar staff galti se bahar click kar de, focus wapas input pe lao
+         
             $(document).on('click', function(e) {
                 if (!$(e.target).closest('#resetBtn, #scanner_input').length) {
                     $input.focus();
                 }
             });
 
-            // 3. MAGIC LOGIC: Scanner Speed Detection
             $input.on('keypress', function(e) {
                 let now = Date.now();
-                let timeDiff = now - lastKeyTime; // Do keys ke beech ka time
+                let timeDiff = now - lastKeyTime; 
                 lastKeyTime = now;
 
                 clearTimeout(scanTimeout);
 
-                // Agar time 50ms se kam hai = SCANNER (Insaan itni tez type nahi kar sakta)
                 if (timeDiff < 50 && timeDiff > 0) {
 
-                    // Scanner ne type karna band kar diya toh 150ms baad auto-submit karo
                     scanTimeout = setTimeout(function() {
                         let val = $input.val().trim();
-                        if (val.length > 2) { // Chhote accidental scans ko ignore karo
-                            $input.css('opacity', '0.5'); // Visual feedback
+                        if (val.length > 2) {
+                            $input.css('opacity', '0.5'); 
                             $form.submit();
                         }
                     }, 150);
                 }
-                // Agar time 50ms se zyada hai = HUMAN TYPING (Toh auto-submit mat karo, Enter ka wait karo)
+               
             });
 
-            // 4. Fallback: Agar koi manually type kar raha hai, toh Enter dabane par submit ho
+            
             $input.on('keydown', function(e) {
                 if (e.which === 13) {
                     e.preventDefault();
@@ -577,7 +569,7 @@ $rem_percent  = $stats['total_stock'] > 0 ? round(($stats['total_remaining'] / $
                 }
             });
 
-            // 5. Reset Button Logic
+            
             $('#resetBtn').on('click', function(e) {
                 e.preventDefault();
                 $input.val('');

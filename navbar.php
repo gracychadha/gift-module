@@ -183,10 +183,7 @@ if ($adminId) {
                             <?php if ($isAdmin || in_array('Manual Distribution', $permissions) || in_array('All', $permissions)): ?>
                                 <li><a href="manual_distribution.php">Manual Distribution</a></li>
                             <?php endif; ?>
-                            <!-- <?php if ($isAdmin || in_array('Gift Final Checklist', $permissions) || in_array('All', $permissions)): ?>
-                                <li><a href="gift_master_checklist.php">Gift Final Checklist</a></li>
-                            <?php endif; ?> -->
-
+                           
                         </ul>
                     </li>
                 <?php endif; ?>
